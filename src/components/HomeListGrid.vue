@@ -49,9 +49,22 @@ import IconPlayCircle from '@/assets/icons/play_circle.svg?component'
 import { inject } from 'vue'
 import { useSpotifyStore } from '@/stores/spotify'
 
+interface EmbedMusic {
+  embedMusic: string
+  updateEmbedMusic: (uri: string, lyric: string) => void
+}
+
 let { list, type } = defineProps(['list', 'type'])
-const { updateEmbedMusic } = inject('embedMusic')
+
 const spotify = useSpotifyStore()
+
+const embedMusicObj = inject<EmbedMusic>('embedMusic')
+
+if (!embedMusicObj) {
+  throw new Error('embedMusic is not provided')
+}
+
+const { updateEmbedMusic } = embedMusicObj
 
 const getAlbumImage = (item: any) => {
   const defaultImage = 'https://via.placeholder.com/300x300'

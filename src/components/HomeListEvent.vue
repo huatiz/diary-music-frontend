@@ -47,8 +47,20 @@ import IconLocationOn from '@/assets/icons/location_on.svg?component'
 import { inject } from 'vue'
 import { useOpenDataStore } from '@/stores/opendata'
 
+interface EmbedMusic {
+  embedMusic: string
+  updateEmbedMusic: (uri: string, lyric: string) => void
+}
+
 const openData = useOpenDataStore()
-const { embedMusic } = inject('embedMusic')
+
+const embedMusicObj = inject<EmbedMusic>('embedMusic')
+
+if (!embedMusicObj) {
+  throw new Error('embedMusic is not provided')
+}
+
+const { embedMusic } = embedMusicObj
 
 let { list } = defineProps(['list'])
 

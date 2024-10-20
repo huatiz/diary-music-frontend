@@ -18,6 +18,10 @@ const mapContainer = ref(null)
 let { lat, lng, zoom } = defineProps(['lat', 'lng', 'zoom'])
 
 onMounted(() => {
+  if (mapContainer.value === null) {
+    return
+  }
+
   const map = L.map(mapContainer.value, {
     center: [lat, lng],
     zoom: zoom || 15
