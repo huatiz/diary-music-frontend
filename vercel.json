@@ -1,4 +1,7 @@
 {
   "version": 2,
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/api/:path(.*)", "destination": "https://diary-music-server.vercel.app/:path" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
