@@ -5,7 +5,7 @@
       <div class="md:min-w-32">
         <div class="md:w-fit">
           <router-link to="/">
-            <img src="../assets/images/music.svg" alt="music" width="32" height="auto" />
+            <img :src="getImage('logo.svg')" alt="music" width="32" height="auto" />
           </router-link>
         </div>
       </div>
@@ -57,6 +57,8 @@ import LanguageGroup from '@/components/LanguageGroup.vue'
 
 import IconMenu from '@/assets/icons/menu.svg?component'
 import IconClose from '@/assets/icons/close.svg?component'
+
+import { getImage } from '@/utils/pubUse'
 
 import { reactive, ref } from 'vue'
 import { RouterLink } from 'vue-router'
