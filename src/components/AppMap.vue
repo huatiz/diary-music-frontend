@@ -9,6 +9,10 @@ export default {
 </script>
 
 <script setup lang="ts">
+import markerIconUrl from '/node_modules/leaflet/dist/images/marker-icon.png'
+import markerIconRetinaUrl from '/node_modules/leaflet/dist/images/marker-icon-2x.png'
+import markerShadowUrl from '/node_modules/leaflet/dist/images/marker-shadow.png'
+
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { onMounted, ref } from 'vue'
@@ -32,6 +36,12 @@ onMounted(() => {
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map)
 
-  let marker = L.marker([lat, lng]).addTo(map)
+  // fix leaflet marker showing on vite
+  L.Icon.Default.prototype.options.iconUrl = markerIconUrl
+  L.Icon.Default.prototype.options.iconRetinaUrl = markerIconRetinaUrl
+  L.Icon.Default.prototype.options.shadowUrl = markerShadowUrl
+  L.Icon.Default.imagePath = ''
+
+  L.marker([lat, lng]).addTo(map)
 })
 </script>
