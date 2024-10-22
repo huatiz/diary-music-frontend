@@ -23,13 +23,13 @@ export default {
 </script>
 
 <script setup lang="ts">
-import event from '@/utils/activity'
-
 import HomeItem from '@/components/HomeItem.vue'
 import HomeListEvent from '@/components/HomeListEvent.vue'
 import HomeListGrid from '@/components/HomeListGrid.vue'
 
+import event from '@/utils/activity'
 import spotify from '@/utils/spotify'
+
 const spotifyGenre = new spotify.Genre()
 const spotifyNewRelease = new spotify.NewRelease()
 

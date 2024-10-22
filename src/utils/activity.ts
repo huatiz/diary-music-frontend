@@ -20,6 +20,7 @@ class Activity {
 
   getActivities = async (limit = 50) => {
     try {
+      this.items.splice(0, this.items.length)
       const data = await opendata_api.getActivities(17)
 
       data.forEach((item: any, index: number) => {

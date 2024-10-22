@@ -4,7 +4,7 @@
     <slot name="header"></slot>
     <Suspense>
       <template #fallback>
-        <AppSpinner />
+        <AppSpinner :hasBreadcrumbs="hasBreadcrumbs" />
       </template>
       <template #default>
         <slot name="default"></slot>
@@ -24,4 +24,5 @@ import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue'
 import AppSpinner from '@/components/AppSpinner.vue'
 
 const { breadcrumbList } = defineProps(['breadcrumbList'])
+const hasBreadcrumbs = Boolean(breadcrumbList)
 </script>

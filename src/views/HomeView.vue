@@ -3,7 +3,7 @@
     <HomeSearch />
     <Suspense>
       <template #fallback>
-        <AppSpinner />
+        <AppLoading />
       </template>
       <template #default>
         <HomeContent />
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import AppSpinner from '@/components/AppSpinner.vue'
+import AppLoading from '@/components/AppLoading.vue'
 import HomeSearch from '@/components/HomeSearch.vue'
 import HomeContent from '@/components/HomeContent.vue'
 </script>
