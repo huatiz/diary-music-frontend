@@ -1,6 +1,10 @@
 <template>
   <main>
+    <HomeSearch />
     <Suspense>
+      <template #fallback>
+        <AppSpinner />
+      </template>
       <template #default>
         <HomeContent />
       </template>
@@ -15,6 +19,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { Suspense } from 'vue'
+import AppSpinner from '@/components/AppSpinner.vue'
+import HomeSearch from '@/components/HomeSearch.vue'
 import HomeContent from '@/components/HomeContent.vue'
 </script>

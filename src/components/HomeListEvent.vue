@@ -1,7 +1,7 @@
 <template>
   <div
     class="flex flex-col gap-4 md:grid md:gap-y-3"
-    :class="embedMusic ? 'md:grid-cols-1' : 'md:grid-cols-2 md:gap-x-[30px] '"
+    :class="embedStore.embedMusic ? 'md:grid-cols-1' : 'md:grid-cols-2 md:gap-x-[30px] '"
   >
     <template v-for="item in list" :key="item.name">
       <router-link :to="getEventUrl(item)">
@@ -12,7 +12,7 @@
             class="flex-shrink-0 overflow-hidden flex items-center w-[90px] rounded-xl md:w-40 md:h-40 md:rounded-tr-none md:rounded-br-none md:bg-white"
           >
             <img
-              :src="openData.getActivityImageSrc(item.eventId, item.imageSrc)"
+              :src="event.getActivityImageSrc(item.eventId, item.imageSrc)"
               :alt="item.name"
               class="zoom"
             />
@@ -44,23 +44,10 @@ export default {
 <script setup lang="ts">
 import IconLocationOn from '@/assets/icons/location_on.svg?component'
 
-import { inject } from 'vue'
-import { useOpenDataStore } from '@/stores/opendata'
+import { useSpotifyEmbedStore } from '@/stores/spotifyEmbed'
+import event from '@/utils/activity'
 
-interface EmbedMusic {
-  embedMusic: string
-  updateEmbedMusic: (uri: string, lyric: string) => void
-}
-
-const openData = useOpenDataStore()
-
-const embedMusicObj = inject<EmbedMusic>('embedMusic')
-
-if (!embedMusicObj) {
-  throw new Error('embedMusic is not provided')
-}
-
-const { embedMusic } = embedMusicObj
+const embedStore = useSpotifyEmbedStore()
 
 let { list } = defineProps(['list'])
 

@@ -1,9 +1,6 @@
 <template>
-  <!-- <div class="my-4">
-    {{ $t('Search') }} {{ $t(category) }} <strong>{{ query }}</strong>
-  </div> -->
   <div class="mt-4">
-    <HomeListGrid :list="items" :type="category" id="result-content">
+    <HomeListGrid :search="search" :list="spotifySearch.items" :type="category" id="result-content">
       <template #artists="{ artists }">
         <p>
           <template v-for="(a, index) in artists" :key="a.id">
@@ -13,7 +10,11 @@
         </p>
       </template>
     </HomeListGrid>
-    <SearchLoadBtn :offset="offset" :total="total" :search="search" />
+    <SearchLoadBtn
+      :offset="spotifySearch.offset.value"
+      :total="spotifySearch.total.value"
+      :search="search"
+    />
   </div>
 </template>
 
@@ -27,57 +28,22 @@ export default {
 import HomeListGrid from '@/components/HomeListGrid.vue'
 import SearchLoadBtn from '@/components/SearchLoadBtn.vue'
 
-import { ref, reactive, watch, toRefs, onUpdated } from 'vue'
-import { useSpotifyStore } from '@/stores/spotify'
+import { watch, toRefs } from 'vue'
 
+import spotify from '@/utils/spotify'
+
+const spotifySearch = new spotify.Search()
 const props = defineProps(['category', 'query'])
 const { category, query } = toRefs(props)
-const spotify = useSpotifyStore()
 
-const offset = ref(0)
-const total = ref(0)
-const items = reactive([])
-const limit = ref(20)
-let categoryStr = props.category + 's'
-
-const setLimit = (dom: any) => {
-  if (!dom) {
-    return
-  }
-
-  const width = dom.clientWidth
-
-  if (width >= 1024) {
-    limit.value = 18
-  } else if (width >= 768) {
-    limit.value = 15
-  } else {
-    limit.value = 9
-  }
+const search = () => {
+  spotifySearch.search(props.category, props.query)
 }
 
-setLimit(document.getElementsByTagName('body')[0])
-search()
-
-onUpdated(() => {
-  console.log('updated')
-})
-
-async function search() {
-  let data = await spotify.search(props.category, props.query, limit.value, offset.value)
-
-  items.push(...(data[categoryStr].items as []))
-
-  total.value = data[categoryStr].total
-  offset.value = data[categoryStr].offset + limit.value
-}
+spotifySearch.setLimitByWidth(document.getElementsByTagName('body')[0])
+await search()
 
 watch([category, query], () => {
-  // Reset values if needed before searching
-  offset.value = 0
-  items.length = 0
-  categoryStr = props.category + 's'
-
-  search()
+  spotifySearch.resetSearch(props.category, props.query)
 })
 </script>

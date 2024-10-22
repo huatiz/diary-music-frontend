@@ -79,12 +79,13 @@ import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue'
 
 import IconMap from '@/assets/icons/map.svg?component'
 
-import { computed, reactive } from 'vue'
+import { getDay, getMonth, getWeekday, getYear, getStartTime } from '@/utils/date'
+
+import { reactive } from 'vue'
 import { useRoute } from 'vue-router'
-import { useOpenDataStore } from '@/stores/opendata'
+import event from '@/utils/activity'
 
 const route = useRoute()
-const openData = useOpenDataStore()
 
 const uid = route.params.id
 
@@ -107,7 +108,7 @@ let info = reactive({
   ]
 })
 
-info = await openData.getActivityInfo(uid)
+info = await event.getActivityInfo(uid)
 const eventId = info.webSales && info.webSales.split('PRODUCT_ID=')[1]
 const breadcrumbList = [
   {
@@ -124,69 +125,7 @@ const breadcrumbList = [
   }
 ]
 
-const getImageSrc = () => openData.getActivityImageSrc(eventId, info.imageUrl)
+const getImageSrc = () => event.getActivityImageSrc(eventId, info.imageUrl)
 
 const getLocationSearchUrl = (location: string) => `https://www.google.com/maps/search/${location}`
-
-const getWeekday = (dateTimeString: string) => {
-  const date = new Date(dateTimeString)
-
-  const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  const weekday = weekdays[date.getDay()]
-
-  return weekday
-}
-
-const getStartTime = (dateTimeString: string) => {
-  if (!dateTimeString) return ''
-
-  const date = new Date(dateTimeString)
-
-  let hours = date.getHours()
-  const minutes = date.getMinutes()
-
-  const formattedTime = `${hours}:${String(minutes).padStart(2, '0')}`
-
-  return formattedTime
-}
-
-const getYear = (dateTimeString: string) => {
-  if (!dateTimeString) return ''
-
-  const date = new Date(dateTimeString)
-
-  return date.getFullYear()
-}
-
-const getMonth = (dateTimeString: string) => {
-  if (!dateTimeString) return ''
-
-  const date = new Date(dateTimeString)
-
-  const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-  ]
-  const month = months[date.getMonth()]
-
-  return month
-}
-
-const getDay = (dateTimeString: string) => {
-  if (!dateTimeString) return ''
-
-  const date = new Date(dateTimeString)
-
-  return date.getDate()
-}
 </script>

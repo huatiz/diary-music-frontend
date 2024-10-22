@@ -1,7 +1,7 @@
 <template>
-  <main class="container mx-auto">
+  <ViewCommon>
     <EventContent />
-  </main>
+  </ViewCommon>
 </template>
 
 <script lang="ts">
@@ -11,5 +11,6 @@ export default {
 </script>
 
 <script setup lang="ts">
+import ViewCommon from '@/components/ViewCommon.vue'
 import EventContent from '@/components/EventContent.vue'
 </script>

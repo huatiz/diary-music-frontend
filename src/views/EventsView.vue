@@ -1,7 +1,7 @@
 <template>
-  <main class="container mx-auto">
+  <ViewCommon :breadcrumbList="breadcrumbList">
     <EventsContent />
-  </main>
+  </ViewCommon>
 </template>
 
 <script lang="ts">
@@ -11,5 +11,17 @@ export default {
 </script>
 
 <script setup lang="ts">
+import ViewCommon from '@/components/ViewCommon.vue'
 import EventsContent from '@/components/EventsContent.vue'
+
+const breadcrumbList = [
+  {
+    name: 'Home',
+    url: '/'
+  },
+  {
+    name: 'Recent Concerts',
+    url: ''
+  }
+]
 </script>

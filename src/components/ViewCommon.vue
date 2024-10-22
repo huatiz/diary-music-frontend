@@ -1,12 +1,13 @@
 <template>
   <main class="container mx-auto">
-    <AppBreadcrumbs :lists="breadcrumbList" />
+    <AppBreadcrumbs v-if="breadcrumbList" :lists="breadcrumbList" />
+    <slot name="header"></slot>
     <Suspense>
       <template #fallback>
         <AppSpinner />
       </template>
       <template #default>
-        <NewReleasesContent />
+        <slot name="default"></slot>
       </template>
     </Suspense>
   </main>
@@ -14,23 +15,13 @@
 
 <script lang="ts">
 export default {
-  name: 'NewReleasesView'
+  name: 'ViewCommon'
 }
 </script>
 
 <script setup lang="ts">
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue'
 import AppSpinner from '@/components/AppSpinner.vue'
-import NewReleasesContent from '@/components/NewReleasesContent.vue'
 
-const breadcrumbList = [
-  {
-    name: 'Home',
-    url: '/'
-  },
-  {
-    name: 'New Releases',
-    url: ''
-  }
-]
+const { breadcrumbList } = defineProps(['breadcrumbList'])
 </script>
