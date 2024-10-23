@@ -39,7 +39,9 @@
                       <IconMap class="hover:fill-sky-600" />
                     </a>
                   </p>
-                  <pre class="whitespace-pre-line">{{ $t('Ticket Price') }} | {{ item.price }}</pre>
+                  <pre v-if="item.price" class="whitespace-pre-line"
+                    >{{ $t('Ticket Price') }} | {{ item.price }}</pre
+                  >
                 </div>
               </div>
               <div

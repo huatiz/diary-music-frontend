@@ -1,7 +1,11 @@
 <template>
   <AppHeader />
   <div class="md:flex">
-    <div class="md:grow" :class="{ 'h-screen overflow-y-scroll': embedStore.embedMusic }">
+    <div
+      ref="content"
+      class="md:grow"
+      :class="{ 'h-screen overflow-y-scroll': embedStore.embedMusic }"
+    >
       <div class="mx-[15px] pb-[60px] md:mx-[45px] md:pb-[120px]">
         <RouterView />
       </div>
@@ -23,7 +27,31 @@ import AppFooter from '@/components/AppFooter.vue'
 
 import { useSpotifyEmbedStore } from '@/stores/spotifyEmbed'
 
-import { RouterView } from 'vue-router'
+import { ref, watch, onMounted } from 'vue'
+import { RouterView, useRoute } from 'vue-router'
 
+const content = ref<HTMLDivElement | null>(null)
+const route = useRoute()
 const embedStore = useSpotifyEmbedStore()
+
+const initialized = (elem: HTMLElement) => {
+  embedStore.setContentElem(elem)
+}
+
+onMounted(() => {
+  if (content.value) {
+    initialized(content.value)
+  }
+})
+
+// reset scroll position when route change
+watch(
+  () => route.fullPath,
+  () => {
+    window.scrollTo(0, 0)
+    if (content.value) {
+      content.value.scrollTo(0, 0)
+    }
+  }
+)
 </script>

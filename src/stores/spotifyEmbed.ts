@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 
 export const useSpotifyEmbedStore = defineStore('spotifyEmbed', () => {
+  const contentElem = ref()
   const embedMusic = ref('')
   const embedMusicLyric = ref('')
   const embedController = ref()
@@ -35,15 +36,31 @@ export const useSpotifyEmbedStore = defineStore('spotifyEmbed', () => {
     initPlayer(embedElem.value)
   }
 
+  const getScrollTop = () => {
+    return contentElem.value.scrollTop || window.scrollY
+  }
+
   const resetEmbedMusic = async () => {
     if (embedController.value) {
       await embedController.value.pause()
     }
+
+    const scrollTop = getScrollTop()
+
     embedMusic.value = ''
     embedMusicLyric.value = ''
+
+    await nextTick()
+    window.scrollTo(0, scrollTop)
   }
 
-  const updateEmbedMusic = (uri: string, lyric: string) => {
+  const setContentElem = (elem: HTMLElement) => {
+    contentElem.value = elem
+  }
+
+  const updateEmbedMusic = async (uri: string, lyric: string) => {
+    const scrollTop = await getScrollTop()
+
     embedMusicLyric.value = lyric
     embedMusic.value = uri
 
@@ -54,6 +71,10 @@ export const useSpotifyEmbedStore = defineStore('spotifyEmbed', () => {
       console.log('fail to init player')
       initPlayer(embedElem.value)
     }
+
+    window.scrollTo(0, 0)
+    await nextTick()
+    contentElem.value.scrollTo(0, scrollTop)
   }
 
   return {
@@ -63,6 +84,7 @@ export const useSpotifyEmbedStore = defineStore('spotifyEmbed', () => {
     embedMusicLyric,
     getEmbedElem,
     resetEmbedMusic,
+    setContentElem,
     updateEmbedMusic
   }
 })
