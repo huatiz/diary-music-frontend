@@ -3,7 +3,9 @@
     <HomeSearch />
     <Suspense>
       <template #fallback>
-        <AppLoading />
+        <div class="pt-[60px]">
+          <AppLoading />
+        </div>
       </template>
       <template #default>
         <HomeContent />

@@ -1,5 +1,6 @@
 <template>
-  <div class="mt-4">
+  <AppSpinner v-if="!spotifySearch.items.length" />
+  <div v-else class="mt-4">
     <HomeListGrid :search="search" :list="spotifySearch.items" :type="category" id="result-content">
       <template #artists="{ artists }">
         <p>
@@ -25,6 +26,7 @@ export default {
 </script>
 
 <script setup lang="ts">
+import AppSpinner from '@/components/AppSpinner.vue'
 import HomeListGrid from '@/components/HomeListGrid.vue'
 import SearchLoadBtn from '@/components/SearchLoadBtn.vue'
 
@@ -36,8 +38,8 @@ const spotifySearch = new spotify.Search()
 const props = defineProps(['category', 'query'])
 const { category, query } = toRefs(props)
 
-const search = () => {
-  spotifySearch.search(props.category, props.query)
+const search = async () => {
+  await spotifySearch.search(props.category, props.query)
 }
 
 spotifySearch.setLimitByWidth(document.getElementsByTagName('body')[0])

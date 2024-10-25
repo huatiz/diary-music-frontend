@@ -1,7 +1,7 @@
 <template>
   <HomeItem title="Recent Concerts">
     <HomeListEvent :list="event.items" />
-    <SearchLoadBtn offset="0" total="0" />
+    <SearchLoadBtn :offset="0" :total="0" :search="event.getActivities" />
   </HomeItem>
 </template>
 
