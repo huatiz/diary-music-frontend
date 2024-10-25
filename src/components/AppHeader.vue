@@ -60,9 +60,10 @@ import IconClose from '@/assets/icons/close.svg?component'
 
 import { getImage } from '@/utils/pubUse'
 
-import { reactive, ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { reactive, ref, watch } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
 
+const route = useRoute()
 let navActive = ref(false)
 
 let links = reactive([
@@ -70,4 +71,11 @@ let links = reactive([
   { name: 'Categories', url: '/genres' },
   { name: 'New Releases', url: '/new-releases' }
 ])
+
+watch(
+  () => route.fullPath,
+  () => {
+    navActive.value = false
+  }
+)
 </script>
