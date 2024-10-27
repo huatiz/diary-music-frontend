@@ -30,7 +30,7 @@
             <input
               type="search"
               id="search-dropdown"
-              class="mb-2.5 block px-4 py-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-green-500 focus:border-green-500"
+              class="mb-2.5 block px-4 py-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg rounded-s-gray-100 border border-gray-300 focus:ring-green-500 focus:border-green-500"
               :placeholder="$t('Search')"
               :value="query"
               @keyup="updateQuery"
@@ -69,6 +69,12 @@ select {
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 10px 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
