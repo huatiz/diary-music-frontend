@@ -16,7 +16,7 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '/api': {
-        target: 'https://diary-music-server.vercel.app/',
+        target: 'https://diary-music-server.vercel.app',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
         configure: (proxy, options) => {
