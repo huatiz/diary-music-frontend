@@ -1,6 +1,6 @@
 <template>
   <header class="sticky z-[1500] top-0 border-solid border-b border-gray-200 bg-white">
-    <div class="flex justify-between items-center px-2 py-4 md:px-[45px] md:py-6">
+    <div class="flex justify-between items-center px-3 py-4 md:px-[45px] md:py-6">
       <div class="w-8 md:hidden"></div>
       <div class="md:min-w-32">
         <div class="md:w-fit">

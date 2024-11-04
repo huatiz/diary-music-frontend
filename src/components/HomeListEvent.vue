@@ -59,16 +59,9 @@ const showEventDate = (startDate: string, endDate: string) =>
   startDate === endDate ? startDate : `${startDate} - ${endDate}`
 
 const showEventLocation = (locations: string[]) => {
-  let result = ''
+  let locationArr = locations.map((item) => item.slice(0, 3))
+  locationArr = [...new Set(locationArr)]
 
-  locations.forEach((item: string, idx: number) => {
-    result += item.slice(0, 3)
-
-    if (idx < locations.length - 1) {
-      result += '、'
-    }
-  })
-
-  return result
+  return locationArr.join('、')
 }
 </script>

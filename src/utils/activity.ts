@@ -26,11 +26,7 @@ class Activity {
       data.forEach((item: any, index: number) => {
         if (index >= limit) return
 
-        const locations = <any>[]
-
-        item.showInfo.forEach((item: any) => {
-          locations.push(item.location)
-        })
+        const locations = item.showInfo.map((item: any) => item.location)
 
         this.items.push({
           imageSrc: item.imageUrl,
