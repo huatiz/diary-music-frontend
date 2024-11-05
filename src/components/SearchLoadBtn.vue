@@ -7,7 +7,7 @@
       @click="getMore()"
       class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded"
     >
-      {{ $t('Get More') }}
+      {{ $t('Load more') }}
     </button>
   </p>
 </template>
