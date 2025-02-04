@@ -15,7 +15,8 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const dropdownTypes = ['album', 'artist', 'playlist', 'track']
+const dropdownTypes = ['album', 'artist', 'track']
+// const dropdownTypes = ['album', 'artist', 'playlist', 'track']
 
 const capitalize = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1)
