@@ -1,39 +1,41 @@
-# music
+# Music Search & Arts Events Platform
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a **Vue 3** project that integrates **Spotify**, **Musixmatch**, and the **Ministry of Culture Arts & Culture Events API**, providing a seamless experience for exploring music and concerts.
 
-## Recommended IDE Setup
+🔗 **[Live Demo (Deployed on Vercel)](https://diary-music.vercel.app/)**
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+---
 
-## Type Support for `.vue` Imports in TS
+## Screenshots
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### 🔹 Desktop Version
 
-## Customize configuration
+![Desktop Preview](./screenshots/desktop.png)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### 🔹 Tablet Version
 
-## Project Setup
+![Tablet Preview](./screenshots/tablet.png)
 
-```sh
-npm install
-```
+### 🔹 Mobile Version
 
-### Compile and Hot-Reload for Development
+![Mobile Preview](./screenshots/mobile.jpg)
 
-```sh
-npm run dev
-```
+---
 
-### Type-Check, Compile and Minify for Production
+## Features
 
-```sh
-npm run build
-```
+- **Music Search**: Search for **artists, albums, and tracks** with real-time data.
+- **Music Exploration**: Browse **music genres** and **newly released albums**.
+- **Arts & Culture Events**: View the latest concerts from the **Ministry of Culture API**.
+- **Lyrics Lookup**: Get song lyrics via **Musixmatch API** (if applicable).
+- **Responsive Design**: Optimized for both desktop and mobile devices.
 
-### Lint with [ESLint](https://eslint.org/)
+## Tech Stack
 
-```sh
-npm run lint
-```
+- **Framework**: Vue 3 + Vite
+- **State Management**: Pinia
+- **Styling**: Tailwind CSS
+- **APIs Integrated**:
+  - Spotify API
+  - Musixmatch API
+  - Ministry of Culture Arts & Culture Events API
