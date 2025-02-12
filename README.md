@@ -12,6 +12,7 @@ Diary Music is a modern music discovery platform built with **Vue 3** that seaml
 - **Music Exploration**: Browse **music genres** and **newly released albums**.
 - **Arts & Culture Events**: View the latest concerts from the **Ministry of Culture API**.
 - **Lyrics Lookup**: Get song lyrics via **Musixmatch API** (if applicable).
+- **Listen to Music**: Play song previews directly from **Spotify API**.
 - **Responsive Design**: Optimized for both desktop and mobile devices.
 
 - **Music Discovery**
