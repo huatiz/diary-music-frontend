@@ -37,7 +37,7 @@
 
 <script lang="ts">
 export default {
-  name: 'HomeListEvent'
+  name: 'EventList'
 }
 </script>
 
@@ -45,7 +45,7 @@ export default {
 import IconLocationOn from '@/assets/icons/location_on.svg?component'
 
 import { useSpotifyEmbedStore } from '@/stores/spotifyEmbed'
-import event from '@/utils/activity'
+import event from '@/services/activity'
 
 const embedStore = useSpotifyEmbedStore()
 

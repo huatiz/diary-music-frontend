@@ -12,7 +12,7 @@ export default {
 
 <script setup lang="ts">
 import ViewCommon from '@/components/ViewCommon.vue'
-import EventsContent from '@/components/EventsContent.vue'
+import EventsContent from '@/components/event/EventsContent.vue'
 
 const breadcrumbList = [
   {

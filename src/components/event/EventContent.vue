@@ -76,8 +76,8 @@ export default {
 </script>
 
 <script setup lang="ts">
-import AppMap from '@/components/AppMap.vue'
-import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue'
+import AppMap from '@/components/common/AppMap.vue'
+import AppBreadcrumbs from '@/components/common/AppBreadcrumbs.vue'
 
 import IconMap from '@/assets/icons/map.svg?component'
 
@@ -85,7 +85,7 @@ import { getDay, getMonth, getWeekday, getYear, getStartTime } from '@/utils/dat
 
 import { reactive } from 'vue'
 import { useRoute } from 'vue-router'
-import event from '@/utils/activity'
+import event from '@/services/activity'
 
 const route = useRoute()
 

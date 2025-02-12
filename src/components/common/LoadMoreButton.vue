@@ -14,12 +14,12 @@
 
 <script lang="ts">
 export default {
-  name: 'SearchLoadBtn'
+  name: 'LoadMoreButton'
 }
 </script>
 
 <script setup lang="ts">
-import AppLoading from '@/components/AppLoading.vue'
+import AppLoading from '@/components/common/AppLoading.vue'
 
 import { ref, watch, toRefs } from 'vue'
 

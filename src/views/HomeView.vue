@@ -21,7 +21,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import AppLoading from '@/components/AppLoading.vue'
-import HomeSearch from '@/components/HomeSearch.vue'
-import HomeContent from '@/components/HomeContent.vue'
+import AppLoading from '@/components/common/AppLoading.vue'
+import HomeSearch from '@/components/home/HomeSearch.vue'
+import HomeContent from '@/components/home/HomeContent.vue'
 </script>

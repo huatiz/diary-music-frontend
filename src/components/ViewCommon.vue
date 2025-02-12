@@ -20,8 +20,8 @@ export default {
 </script>
 
 <script setup lang="ts">
-import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue'
-import AppSpinner from '@/components/AppSpinner.vue'
+import AppBreadcrumbs from '@/components/common/AppBreadcrumbs.vue'
+import AppSpinner from '@/components/common/AppSpinner.vue'
 
 const { breadcrumbList } = defineProps(['breadcrumbList'])
 const hasBreadcrumbs = Boolean(breadcrumbList)

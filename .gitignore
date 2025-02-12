@@ -1,3 +1,38 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build output
+dist
+dist-ssr
+*.local
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE - VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# IDE - JetBrains
+.idea
+*.iml
+*.ipr
+*.iws
+
+# IDE - Visual Studio
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 # Logs
 logs
 *.log
@@ -7,24 +42,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+# System files
 .DS_Store
-dist
-dist-ssr
-coverage
-*.local
+Thumbs.db
 
+# Testing
+coverage
 /cypress/videos/
 /cypress/screenshots/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
+# TypeScript
 *.tsbuildinfo

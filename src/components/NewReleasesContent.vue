@@ -1,6 +1,6 @@
 <template>
-  <HomeItem title="New Releases">
-    <HomeListGrid :list="newRelease.items" type="new-release" id="result-content">
+  <ContentSection title="New Releases">
+    <GridList :list="newRelease.items" type="new-release" id="result-content">
       <template #artists="{ artists }">
         <p>
           <template v-for="(a, index) in artists" :key="a.id">
@@ -9,13 +9,13 @@
           </template>
         </p>
       </template>
-    </HomeListGrid>
-    <SearchLoadBtn
-      :offset="newRelease.offset.value"
-      :total="newRelease.total.value"
+    </GridList>
+    <LoadMoreButton
+      :offset="newRelease.offset"
+      :total="newRelease.total"
       :search="newRelease.search"
     />
-  </HomeItem>
+  </ContentSection>
 </template>
 
 <script lang="ts">
@@ -25,14 +25,18 @@ export default {
 </script>
 
 <script setup lang="ts">
-import HomeItem from '@/components/HomeItem.vue'
-import HomeListGrid from '@/components/HomeListGrid.vue'
-import SearchLoadBtn from '@/components/SearchLoadBtn.vue'
+import ContentSection from '@/components/common/ContentSection.vue'
+import GridList from '@/components/common/GridList.vue'
+import LoadMoreButton from '@/components/common/LoadMoreButton.vue'
+import spotify from '@/services/spotify'
+import { ref } from 'vue'
 
-import spotify from '@/utils/spotify'
+const newRelease = ref(new spotify.NewRelease())
 
-const newRelease = new spotify.NewRelease()
-
-newRelease.setLimitByWidth(document.getElementsByTagName('body')[0])
-await newRelease.search()
+newRelease.value.setLimitByWidth(document.getElementsByTagName('body')[0])
+try {
+  await newRelease.value.search()
+} catch (error) {
+  console.error('Error fetching new releases:', error)
+}
 </script>

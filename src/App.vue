@@ -1,5 +1,5 @@
 <template>
-  <AppHeader />
+  <MainHeader />
   <div class="md:flex">
     <div
       ref="content"
@@ -14,16 +14,16 @@
       :class="{ hidden: !embedStore.embedMusic }"
       class="fixed z-[1450] bottom-[-64px] left-0 w-full lg:static lg:shrink-0 lg:w-auto"
     >
-      <AppSidebar />
+      <MainSidebar />
     </div>
   </div>
-  <AppFooter />
+  <MainFooter />
 </template>
 
 <script setup lang="ts">
-import AppHeader from '@/components/AppHeader.vue'
-import AppSidebar from '@/components/AppSidebar.vue'
-import AppFooter from '@/components/AppFooter.vue'
+import MainHeader from '@/layouts/MainHeader.vue'
+import MainSidebar from '@/layouts/MainSidebar.vue'
+import MainFooter from '@/layouts/MainFooter.vue'
 
 import { useSpotifyEmbedStore } from '@/stores/spotifyEmbed'
 

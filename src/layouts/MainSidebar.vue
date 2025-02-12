@@ -35,7 +35,7 @@
 
 <script lang="ts">
 export default {
-  name: 'AppSidebar'
+  name: 'MainSidebar'
 }
 </script>
 

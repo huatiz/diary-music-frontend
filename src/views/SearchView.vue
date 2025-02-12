@@ -17,8 +17,8 @@ export default {
 
 <script setup lang="ts">
 import ViewCommon from '@/components/ViewCommon.vue'
-import SearchForm from '@/components/SearchForm.vue'
-import SearchContent from '@/components/SearchContent.vue'
+import SearchForm from '@/components/search/SearchForm.vue'
+import SearchContent from '@/components/search/SearchContent.vue'
 
 const { category, query } = defineProps(['category', 'query'])
 </script>

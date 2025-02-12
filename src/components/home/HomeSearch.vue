@@ -59,7 +59,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import SearchCommon from '@/components/SearchCommon.vue'
+import SearchCommon from '@/components/search/SearchCommon.vue'
 
 import IconSearch from '@/assets/icons/search.svg?component'
 </script>

@@ -39,7 +39,7 @@
 
 <script lang="ts">
 export default {
-  name: 'HomeListGrid'
+  name: 'GridList'
 }
 </script>
 
@@ -54,7 +54,7 @@ let { list, type } = defineProps(['list', 'type'])
 const embedStore = useSpotifyEmbedStore()
 
 const getAlbumImage = (item: any) => {
-  const defaultImage = 'https://via.placeholder.com/300x300'
+  const defaultImage = 'https://placehold.co/300x300'
 
   switch (type) {
     case 'category':

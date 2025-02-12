@@ -48,17 +48,17 @@
 
 <script lang="ts">
 export default {
-  name: 'AppHeader'
+  name: 'MainHeader'
 }
 </script>
 
 <script setup lang="ts">
-import LanguageGroup from '@/components/LanguageGroup.vue'
+import LanguageGroup from '@/components/common/LanguageGroup.vue'
 
 import IconMenu from '@/assets/icons/menu.svg?component'
 import IconClose from '@/assets/icons/close.svg?component'
 
-import { getImage } from '@/utils/pubUse'
+import { getImage } from '@/utils/common'
 
 import { reactive, ref, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
