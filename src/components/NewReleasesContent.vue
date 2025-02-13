@@ -33,10 +33,15 @@ import { ref } from 'vue'
 
 const newRelease = ref(new spotify.NewRelease())
 
-newRelease.value.setLimitByWidth(document.getElementsByTagName('body')[0])
-try {
-  await newRelease.value.search()
-} catch (error) {
-  console.error('Error fetching new releases:', error)
+const init = async () => {
+  newRelease.value.setLimitByWidth(document.getElementsByTagName('body')[0])
+
+  try {
+    await newRelease.value.search()
+  } catch (error) {
+    console.error('Error fetching new releases:', error)
+  }
 }
+
+await init()
 </script>

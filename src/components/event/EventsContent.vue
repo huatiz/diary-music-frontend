@@ -18,5 +18,13 @@ import ContentSection from '@/components/common/ContentSection.vue'
 import EventList from '@/components/event/EventList.vue'
 import LoadMoreButton from '@/components/common/LoadMoreButton.vue'
 
-await event.getActivities()
+const init = async () => {
+  try {
+    await event.getActivities()
+  } catch (error) {
+    console.error('Error fetching events:', error)
+  }
+}
+
+await init()
 </script>

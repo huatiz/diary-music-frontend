@@ -26,10 +26,15 @@ import { ref } from 'vue'
 
 const genre = ref(new spotify.Genre())
 
-genre.value.setLimitByWidth(document.getElementsByTagName('body')[0])
-try {
-  await genre.value.search()
-} catch (error) {
-  console.error('Error fetching genres:', error)
+const init = async () => {
+  genre.value.setLimitByWidth(document.getElementsByTagName('body')[0])
+
+  try {
+    await genre.value.search()
+  } catch (error) {
+    console.error('Error fetching genres:', error)
+  }
 }
+
+await init()
 </script>

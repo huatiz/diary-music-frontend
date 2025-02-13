@@ -110,7 +110,16 @@ let info = reactive({
   ]
 })
 
-info = await event.getActivityInfo(uid)
+const init = async () => {
+  try {
+    info = await event.getActivityInfo(uid)
+  } catch (error) {
+    console.error('Error fetching event:', error)
+  }
+}
+
+await init()
+
 const eventId = info.webSales && info.webSales.split('PRODUCT_ID=')[1]
 const breadcrumbList = [
   {

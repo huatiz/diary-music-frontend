@@ -26,20 +26,28 @@ export default {
 import ContentSection from '@/components/common/ContentSection.vue'
 import EventList from '@/components/event/EventList.vue'
 import GridList from '@/components/common/GridList.vue'
-
 import event from '@/services/activity'
 import spotify from '@/services/spotify'
+import { ref } from 'vue'
 
-const spotifyGenre = new spotify.Genre()
-const spotifyNewRelease = new spotify.NewRelease()
+const spotifyGenre = ref(new spotify.Genre())
+const spotifyNewRelease = ref(new spotify.NewRelease())
 
 const limitNumber = 12
 const eventLimitNumber = 4
 
-spotifyGenre.setLimit(limitNumber)
-spotifyNewRelease.setLimit(limitNumber)
+spotifyGenre.value.setLimit(limitNumber)
+spotifyNewRelease.value.setLimit(limitNumber)
 
-await spotifyGenre.search()
-await spotifyNewRelease.search()
-await event.getActivities(eventLimitNumber)
+const init = async () => {
+  try {
+    await spotifyGenre.value.search()
+    await spotifyNewRelease.value.search()
+    await event.getActivities(eventLimitNumber)
+  } catch (error) {
+    console.error('Error fetching data:', error)
+  }
+}
+
+await init()
 </script>
